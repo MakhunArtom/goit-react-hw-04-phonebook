@@ -10,6 +10,21 @@ export class App extends Component {
     filter: '',
   };
 
+  componentDidMount() {
+    const contact = localStorage.getItem('contacts');
+    const parsContacts = JSON.parse(contact);
+
+    if (parsContacts) {
+      this.setState({ contacts: parsContacts });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState !== this.state.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
+
   notification = notificatinName => {
     const { contacts } = this.state;
     const normalaisNotificatinName = notificatinName.toLowerCase();
