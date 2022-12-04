@@ -32,7 +32,7 @@ export const App = () => {
       if (name.toLowerCase() === normalaisNotificatinName) {
         alert(`${name} is already in contacts.`);
 
-        // this.setState({ contacts: contacts });
+        setContacts(contacts);
       }
       return [];
     });
